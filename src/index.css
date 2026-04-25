@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Poppins", sans-serif;
+  
+  --color-brand-bg: #0b0b0f;
+  --color-brand-orange: #ff6a00;
+  --color-brand-orange-light: #ff8c00;
+  
+  --breakpoint-xs: 480px;
+  
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-pulse-slow: pulse-slow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes pulse-slow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-brand-bg text-white font-sans selection:bg-brand-orange/30 selection:text-brand-orange-light;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+}
+
+.glass-card {
+  @apply bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl transition-all duration-300;
+}
+
+.glass-card:hover {
+  @apply border-brand-orange/30 bg-white/10 shadow-[0_0_30px_rgba(255,106,0,0.1)];
+}
+
+.orange-gradient-text {
+  @apply bg-gradient-to-r from-brand-orange to-brand-orange-light bg-clip-text text-transparent;
+}
+
+.orange-gradient-bg {
+  @apply bg-gradient-to-r from-brand-orange to-brand-orange-light;
+}
+
+.neural-pattern {
+  background-image: radial-gradient(circle at 2px 2px, rgba(255, 106, 0, 0.05) 1px, transparent 0);
+  background-size: 40px 40px;
+}
+
+.mesh-grid {
+  background-image: 
+    linear-gradient(rgba(255, 106, 0, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 106, 0, 0.05) 1px, transparent 1px);
+  background-size: 50px 50px;
+  position: relative;
+}
+
+.mesh-grid::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, transparent, #0b0b0f 90%);
+  pointer-events: none;
+}
+
+.tech-card {
+  @apply bg-white/[0.03] backdrop-blur-md border border-white/10 rounded-2xl flex flex-col items-center justify-center transition-all duration-300;
+}
+
+.tech-card:hover {
+  @apply border-brand-orange/40 bg-white/[0.08] -translate-y-1 shadow-[0_0_20px_rgba(255,106,0,0.15)];
+}
